@@ -1,0 +1,5 @@
+{
+    "Serial": "/dev/ttyS1",
+    "Baudrate": 115200,
+    "Id": 1
+}
