@@ -11,9 +11,9 @@ target_include_directories(dxlSlave PUBLIC
     $<INSTALL_INTERFACE:include>
 )
 
-# Build example executable (dxlSlaveTest.cpp -> test)
-add_executable(test examples/dxlSlaveTest.cpp)
-target_link_libraries(test dxlSlave)
+# Build example executable (dxlSlaveTest.cpp -> dxlSlaveTest)
+add_executable(dxlSlaveTest examples/dxlSlaveTest.cpp)
+target_link_libraries(dxlSlaveTest dxlSlave)
 
 # Install library and header
 install(TARGETS dxlSlave
