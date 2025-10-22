@@ -1,0 +1,5 @@
+add_library(lz4 lz4.c lz4frame.c lz4hc.c xxhash.c)
+
+install(TARGETS lz4 "${PROJECT_BINARY_DIR}/libtlive-targets.cmake"EXPORT "${PROJECT_BINARY_DIR}/libtlive-targets.cmake") 
+
+install(TARGETS lz4 DESTINATION ${LIB_DESTINATION} ARCHIVE DESTINATION lib)

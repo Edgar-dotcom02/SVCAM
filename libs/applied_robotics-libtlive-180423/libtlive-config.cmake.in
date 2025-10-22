@@ -1,0 +1,31 @@
+# - Config file for SyboTech Tracking Camera SDK
+# It defines the following variables:
+#    LIBTLIVE_INCLUDE_DIRS - Include directories
+#    LIBTLIVE_LIBRARIES    - link libraries
+
+get_filename_component(LIBTLIVE_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+
+set(LIBTLIVE_ROOT "${LIBTLIVE_CMAKE_DIR}/../../../")
+
+if(NOT TARGET @PROJECT_OUTPUT_LIB@)
+	include("${LIBTLIVE_CMAKE_DIR}/libtlive-targets.cmake")
+endif()
+
+# For the case when we use LIBTLIVE from build directory, 
+# and path to LIBTLIVE-config.cmake was taken from cmake cache
+set(LIBTLIVE_INCLUDE_DIRS "${LIBTLIVE_ROOT}/include/@PROJECT_NAME@")
+
+if(EXISTS "${LIBTLIVE_CMAKE_DIR}/LIBTLIVE-config.local")
+	set(LIBTLIVE_INCLUDE_DIRS "@LIBTLIVE_SOURCE_DIR@/include/@PROJECT_NAME@")
+endif()
+
+set(LIBTLIVE_LIBRARIES
+  "@PROJECT_OUTPUT_LIB@"
+)
+
+#set(LIBTLIVE_LIBRARIES
+#  "${LIBTLIVE_CMAKE_DIR}/../../../@PROJECT_LIB_DIR@/@PROJECT_OUTPUT_LIB@"
+#)
+
+list(REMOVE_DUPLICATES LIBTLIVE_INCLUDE_DIRS)
+list(REMOVE_DUPLICATES LIBTLIVE_LIBRARIES)

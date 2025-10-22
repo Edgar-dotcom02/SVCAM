@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C7571618-2DE5-471D-91FA-FCE2DC0044E8}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>MyCamScsiLib</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(ProjectDir);$(ProjectDir)\..\include\tlive;$(ProjectDir)\..\3rdparty\lz4;$(ProjectDir)\..\3rdparty\3dproc;$(ProjectDir)\..\3rdparty\zstd;$(ProjectDir)\..\include;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)$(Configuration)\..\..\lib</OutDir>
+    <TargetName>libtlive</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>nMY_CAM_SCSI_CHECK_BLOCK_ORDER;WIN32;MY_CAM_SCSI_USE_TBB;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(LIBTCONFIG_DIR)\include;$(ZMQ4_DIR)\include;$(TBB30_INSTALL_DIR)\include;$(OPENCV31_DIR)\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;MY_CAM_SCSI_USE_TBB;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(TBB30_INSTALL_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\3rdparty\3dproc\MyPerformanceMeter.cpp" />
+    <ClCompile Include="..\3rdparty\lz4\lz4.c" />
+    <ClCompile Include="..\3rdparty\lz4\lz4frame.c" />
+    <ClCompile Include="..\3rdparty\lz4\lz4hc.c" />
+    <ClCompile Include="..\3rdparty\lz4\xxhash.c" />
+    <ClCompile Include="..\3rdparty\zstd\cover.c" />
+    <ClCompile Include="..\3rdparty\zstd\divsufsort.c" />
+    <ClCompile Include="..\3rdparty\zstd\entropy_common.c" />
+    <ClCompile Include="..\3rdparty\zstd\error_private.c" />
+    <ClCompile Include="..\3rdparty\zstd\fse_compress.c" />
+    <ClCompile Include="..\3rdparty\zstd\fse_decompress.c" />
+    <ClCompile Include="..\3rdparty\zstd\huf_compress.c" />
+    <ClCompile Include="..\3rdparty\zstd\huf_decompress.c" />
+    <ClCompile Include="..\3rdparty\zstd\pool.c" />
+    <ClCompile Include="..\3rdparty\zstd\threading.c" />
+    <ClCompile Include="..\3rdparty\zstd\xxhash.c" />
+    <ClCompile Include="..\3rdparty\zstd\zbuff_common.c" />
+    <ClCompile Include="..\3rdparty\zstd\zbuff_compress.c" />
+    <ClCompile Include="..\3rdparty\zstd\zbuff_decompress.c" />
+    <ClCompile Include="..\3rdparty\zstd\zdict.c" />
+    <ClCompile Include="..\3rdparty\zstd\zstdmt_compress.c" />
+    <ClCompile Include="..\3rdparty\zstd\zstd_common.c" />
+    <ClCompile Include="..\3rdparty\zstd\zstd_compress.c" />
+    <ClCompile Include="..\3rdparty\zstd\zstd_decompress.c" />
+    <ClCompile Include="..\3rdparty\zstd\zstd_double_fast.c" />
+    <ClCompile Include="..\3rdparty\zstd\zstd_fast.c" />
+    <ClCompile Include="..\3rdparty\zstd\zstd_lazy.c" />
+    <ClCompile Include="..\3rdparty\zstd\zstd_ldm.c" />
+    <ClCompile Include="..\3rdparty\zstd\zstd_opt.c" />
+    <ClCompile Include="..\3rdparty\zstd\zstd_v01.c" />
+    <ClCompile Include="..\3rdparty\zstd\zstd_v02.c" />
+    <ClCompile Include="..\3rdparty\zstd\zstd_v03.c" />
+    <ClCompile Include="..\3rdparty\zstd\zstd_v04.c" />
+    <ClCompile Include="..\3rdparty\zstd\zstd_v05.c" />
+    <ClCompile Include="..\3rdparty\zstd\zstd_v06.c" />
+    <ClCompile Include="..\3rdparty\zstd\zstd_v07.c" />
+    <ClCompile Include="..\src\tlive_client.cpp" />
+    <ClCompile Include="..\src\tlive_server.cpp" />
+    <ClCompile Include="..\src\tlive_stream.cpp" />
+    <ClCompile Include="..\src\tlive_stream_client.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\3rdparty\3dproc\MyPerformanceMeter.h" />
+    <ClInclude Include="..\3rdparty\3dproc\MyFastRemapper.h" />
+    <ClInclude Include="..\3rdparty\lz4\lz4.h" />
+    <ClInclude Include="..\3rdparty\lz4\lz4frame.h" />
+    <ClInclude Include="..\3rdparty\lz4\lz4frame_static.h" />
+    <ClInclude Include="..\3rdparty\lz4\lz4hc.h" />
+    <ClInclude Include="..\3rdparty\lz4\lz4opt.h" />
+    <ClInclude Include="..\3rdparty\lz4\xxhash.h" />
+    <ClInclude Include="..\3rdparty\zstd\bitstream.h" />
+    <ClInclude Include="..\3rdparty\zstd\compiler.h" />
+    <ClInclude Include="..\3rdparty\zstd\divsufsort.h" />
+    <ClInclude Include="..\3rdparty\zstd\error_private.h" />
+    <ClInclude Include="..\3rdparty\zstd\fse.h" />
+    <ClInclude Include="..\3rdparty\zstd\huf.h" />
+    <ClInclude Include="..\3rdparty\zstd\mem.h" />
+    <ClInclude Include="..\3rdparty\zstd\pool.h" />
+    <ClInclude Include="..\3rdparty\zstd\threading.h" />
+    <ClInclude Include="..\3rdparty\zstd\xxhash.h" />
+    <ClInclude Include="..\3rdparty\zstd\zbuff.h" />
+    <ClInclude Include="..\3rdparty\zstd\zdict.h" />
+    <ClInclude Include="..\3rdparty\zstd\zstd.h" />
+    <ClInclude Include="..\3rdparty\zstd\zstdmt_compress.h" />
+    <ClInclude Include="..\3rdparty\zstd\zstd_compress.h" />
+    <ClInclude Include="..\3rdparty\zstd\zstd_double_fast.h" />
+    <ClInclude Include="..\3rdparty\zstd\zstd_errors.h" />
+    <ClInclude Include="..\3rdparty\zstd\zstd_fast.h" />
+    <ClInclude Include="..\3rdparty\zstd\zstd_internal.h" />
+    <ClInclude Include="..\3rdparty\zstd\zstd_lazy.h" />
+    <ClInclude Include="..\3rdparty\zstd\zstd_ldm.h" />
+    <ClInclude Include="..\3rdparty\zstd\zstd_legacy.h" />
+    <ClInclude Include="..\3rdparty\zstd\zstd_opt.h" />
+    <ClInclude Include="..\3rdparty\zstd\zstd_v01.h" />
+    <ClInclude Include="..\3rdparty\zstd\zstd_v02.h" />
+    <ClInclude Include="..\3rdparty\zstd\zstd_v03.h" />
+    <ClInclude Include="..\3rdparty\zstd\zstd_v04.h" />
+    <ClInclude Include="..\3rdparty\zstd\zstd_v05.h" />
+    <ClInclude Include="..\3rdparty\zstd\zstd_v06.h" />
+    <ClInclude Include="..\3rdparty\zstd\zstd_v07.h" />
+    <ClInclude Include="..\include\tlive\tlive_client.h" />
+    <ClInclude Include="..\include\tlive\tlive_server.h" />
+    <ClInclude Include="..\include\tlive\tlive_stream.h" />
+    <ClInclude Include="..\include\tlive\tlive_stream_client.h" />
+    <ClInclude Include="..\include\tlive\tlive_wanted.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
