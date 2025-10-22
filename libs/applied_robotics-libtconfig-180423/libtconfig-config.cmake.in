@@ -1,0 +1,32 @@
+# - Config file for SyboTech Tracking Camera SDK
+# It defines the following variables:
+#    LIBTCONFIG_INCLUDE_DIRS - Include directories
+#    LIBTCONFIG_LIBRARIES    - link libraries
+
+get_filename_component(LIBTCONFIG_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+
+set(LIBTCONFIG_ROOT "${LIBTCONFIG_CMAKE_DIR}/../../../")
+
+if(NOT TARGET @PROJECT_OUTPUT_LIB@)
+	include("${LIBTCONFIG_CMAKE_DIR}/libtconfig-targets.cmake")
+endif()
+
+# For the case when we use LIBTCONFIG from build directory, 
+# and path to LIBTCONFIG-config.cmake was taken from cmake cache
+set(LIBTCONFIG_INCLUDE_DIRS "${LIBTCONFIG_ROOT}/include/@PROJECT_NAME@")
+
+if(EXISTS "${LIBTCONFIG_CMAKE_DIR}/LIBTCONFIG-config.local")
+	set(LIBTCONFIG_INCLUDE_DIRS "@LIBTCONFIG_SOURCE_DIR@/include/@PROJECT_NAME@")
+endif()
+
+set(LIBTCONFIG_LIBRARIES
+  "@PROJECT_OUTPUT_LIB@"
+)
+
+#set(LIBTCONFIG_LIBRARIES
+#  "${LIBTCONFIG_CMAKE_DIR}/../../../@PROJECT_LIB_DIR@/@PROJECT_OUTPUT_LIB@"
+#  "@LIBUSB1_LIBRARIES@"
+#)
+
+list(REMOVE_DUPLICATES LIBTCONFIG_INCLUDE_DIRS)
+list(REMOVE_DUPLICATES LIBTCONFIG_LIBRARIES)
