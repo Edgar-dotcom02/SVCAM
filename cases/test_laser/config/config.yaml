@@ -1,0 +1,19 @@
+camera:
+  intrinsics:
+    fx: 480.50306563246062
+    fy: 479.47904092273950
+    cx: 327.95650986671677
+    cy: 239.74048148295319
+  dist_coeffs: [-0.37376179439012602, 0.14950944626490301, -0.0035389969511980001, -0.00020541207419399999, 0]
+
+laserscan:
+  num_readings: 320      # Horizontal readings
+  angle_min: -1.97       # rad
+  angle_max: 1.97        # rad
+  range_min: 0.25        # m
+  range_max: 5.0         # m
+  k_pixel: 2.0           # 640 / 320 = 2.0
+  close_threshold: 0.3   # m
+  read_delay_ms: 20
+  min_valid_percent: 5.0
+  max_no_frames: 1000
