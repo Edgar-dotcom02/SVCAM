@@ -279,3 +279,4 @@ int main(int argc, char** argv)
     std::cout << "Circle detection program shutdown." << std::endl;
     return 0;
 }
+
