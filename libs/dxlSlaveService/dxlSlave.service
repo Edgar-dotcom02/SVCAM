@@ -1,0 +1,10 @@
+[Unit]
+Description=DxlSlave Service
+
+[Service]
+ExecStartPre=/bin/sleep 5
+WorkingDirectory=/usr/bin/dxl/
+ExecStart=/usr/bin/dxl/DxlSlave
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,40 @@
+#!/bin/bash
+
+echo "=== Установка dxlSlave.service для SVCAM ==="
+
+if [[ $EUID -ne 0 ]]; then
+   echo "Запустите скрипт с sudo: sudo ./install_dxl.sh"
+   exit 1
+fi
+
+# Создание директории
+mkdir -p /usr/bin/dxl
+
+# Проверка файлов
+if [[ ! -f "DxlSlave" ]]; then
+    echo "ОШИБКА: Файл DxlSlave не найден!"
+    echo "Проверьте, что вы находитесь в папке dxlSlaveService"
+    exit 1
+fi
+
+# Копирование файлов
+echo "Копирование файлов..."
+cp DxlSlave /usr/bin/dxl/
+cp config.json /usr/bin/dxl/
+cp libSystem.IO.Ports.Native.so /usr/bin/dxl/
+chmod +x /usr/bin/dxl/DxlSlave
+
+# Копирование сервиса
+cp dxlSlave.service /etc/systemd/system/
+
+# Перезагрузка systemd
+systemctl daemon-reload
+
+# Активация и запуск сервиса
+systemctl enable dxlSlave.service
+systemctl start dxlSlave.service
+
+# Проверка статуса
+if systemctl is-active --quiet dxlSlave.service; then
+    echo " УСТАНОВКА УСПЕШНА!"
+fi
