@@ -3,7 +3,7 @@
 echo "=== Установка dxlSlave.service для SVCAM ==="
 
 if [[ $EUID -ne 0 ]]; then
-   echo "Запустите скрипт с sudo: sudo ./install_dxl.sh"
+   echo "ОШИБКА: Запустите скрипт с sudo: sudo ./install_dxl.sh"
    exit 1
 fi
 
