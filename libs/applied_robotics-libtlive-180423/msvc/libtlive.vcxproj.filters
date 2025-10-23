@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="zstd">
+      <UniqueIdentifier>{78854b48-ed04-47fb-a1fd-7f528416ac54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lz4">
+      <UniqueIdentifier>{74bedc6f-7ea1-4a0e-861d-4075b76e2155}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3dproc">
+      <UniqueIdentifier>{1618d13b-9de8-4146-b474-448359cd38c6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\tlive_server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tlive_stream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\lz4\lz4.c">
+      <Filter>lz4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\lz4\lz4frame.c">
+      <Filter>lz4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\lz4\lz4hc.c">
+      <Filter>lz4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\lz4\xxhash.c">
+      <Filter>lz4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\cover.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\divsufsort.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\entropy_common.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\error_private.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\fse_compress.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\fse_decompress.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\huf_compress.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\huf_decompress.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\pool.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\threading.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\xxhash.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zbuff_common.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zbuff_compress.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zbuff_decompress.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zdict.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zstd_common.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zstd_compress.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zstd_decompress.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zstd_double_fast.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zstd_fast.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zstd_lazy.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zstd_ldm.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zstd_opt.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zstd_v01.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zstd_v02.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zstd_v03.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zstd_v04.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zstd_v05.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zstd_v06.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zstd_v07.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\zstd\zstdmt_compress.c">
+      <Filter>zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tlive_client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tlive_stream_client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdparty\3dproc\MyPerformanceMeter.cpp">
+      <Filter>3dproc</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\tlive\tlive_server.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\tlive\tlive_stream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\tlive\tlive_wanted.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\lz4\xxhash.h">
+      <Filter>lz4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\lz4\lz4.h">
+      <Filter>lz4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\lz4\lz4frame.h">
+      <Filter>lz4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\lz4\lz4frame_static.h">
+      <Filter>lz4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\lz4\lz4hc.h">
+      <Filter>lz4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\lz4\lz4opt.h">
+      <Filter>lz4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\bitstream.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\compiler.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\divsufsort.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\error_private.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\fse.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\huf.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\mem.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\pool.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\threading.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\xxhash.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zbuff.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zdict.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zstd.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zstd_compress.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zstd_double_fast.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zstd_errors.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zstd_fast.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zstd_internal.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zstd_lazy.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zstd_ldm.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zstd_legacy.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zstd_opt.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zstd_v01.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zstd_v02.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zstd_v03.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zstd_v04.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zstd_v05.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zstd_v06.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zstd_v07.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\zstd\zstdmt_compress.h">
+      <Filter>zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\tlive\tlive_client.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\tlive\tlive_stream_client.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\3dproc\MyPerformanceMeter.h">
+      <Filter>3dproc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdparty\3dproc\MyFastRemapper.h">
+      <Filter>3dproc</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
