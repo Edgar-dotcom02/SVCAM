@@ -13,7 +13,7 @@
 #include <opencv2/opencv.hpp>
 #include <yaml-cpp/yaml.h>
 #include <trackingcam3d_reader/TrackingCam3d_Reader.h>
-// #include "dxlSlave.h"
+#include "dxlSlave.h"
 
 std::atomic<bool> stop{false};
 
@@ -23,33 +23,15 @@ void signalHandler(int signum)
     std::cout << std::endl << "SHUTDOWN: Received exit signal. Stopping program..." << std::endl;
 }
 
-// void serializeScan(const std::vector<float>& ranges, const std::string& filename) 
-// {
-//     uint32_t num_readings = ranges.size();
-//     std::vector<uint8_t> buf;
-//     buf.reserve(4 + ranges.size() * sizeof(float));
-//     buf.insert(buf.end(), reinterpret_cast<uint8_t*>(&num_readings), reinterpret_cast<uint8_t*>(&num_readings + 1));
-//     buf.insert(buf.end(), reinterpret_cast<const uint8_t*>(ranges.data()),
-//                reinterpret_cast<const uint8_t*>(ranges.data() + ranges.size() * sizeof(float)));
-
-//     std::ofstream out(filename, std::ios::binary);
-//     if (!out) {
-//         std::cerr << "Failed to write " << filename << "\n";
-//         return;
-//     }
-//     out.write(reinterpret_cast<const char*>(buf.data()), buf.size());
-//     out.close();
-// }
-
 int main(int argc, char** argv) 
 {
     signal(SIGINT, signalHandler);
 	
-	// DxlSlave slave;
-	// if (!slave.connect()) {
-	// 	std::cerr << "DxlSlave connection error" << std::endl;
-	// 	return 1;
-	// }
+	DxlSlave slave;
+	if (!slave.connect()) {
+		std::cerr << "DxlSlave connection error" << std::endl;
+		return 1;
+	}
 	
 	YAML::Node config;
 	std::string config_base_path = "../config/";
@@ -59,7 +41,7 @@ int main(int argc, char** argv)
 	}
 	catch (YAML::BadFile& e) 
     {
-		// slave.disconnect();
+		slave.disconnect();
 		std::cerr << "Failed to load config file " << config_path << std::endl;
 		return 1;
 	}
@@ -79,21 +61,25 @@ int main(int argc, char** argv)
     const float range_min = config["laserscan"]["range_min"].as<float>();
     const float range_max = config["laserscan"]["range_max"].as<float>();
     const float k_pixel = config["laserscan"]["k_pixel"].as<float>();
-    const float close_threshold = config["laserscan"]["close_threshold"].as<float>();
     const float min_valid_percent = config["laserscan"]["min_valid_percent"].as<float>();
     const int read_delay_ms = config["laserscan"]["read_delay_ms"].as<int>();
     const int max_no_frames = config["laserscan"]["max_no_frames"].as<int>();
 
-    const std::vector<std::string> stream_req = {"depth=100000"};
+    const std::vector<std::string> stream_req = {"depth=1000000"};
     TrackingCamReader cam_reader(stream_req);
  	if (!cam_reader.connect()) 
     {
- 		// slave.disconnect();
+ 		slave.disconnect();
  		std::cerr  << "Failed to connect camera client" << std::endl;
  		return 1;
  	}
 
     int no_frame_count = 0;
+    for (int i = 1; i < num_readings+1; ++i) 
+    {
+        slave.callMethod(i, 0);
+    }
+
     std::cout << "Starting laserscan." << std::endl;
 
     while (!stop.load(std::memory_order_relaxed)) 
@@ -140,8 +126,9 @@ int main(int argc, char** argv)
             continue;
         }
 
-        // Initialize scan ranges (inf = range_max)
-        std::vector<float> ranges(num_readings, range_max);
+        // Initialize scan ranges
+        std::vector<uint8_t> ranges(num_readings, 
+                            static_cast<uint8_t>(round(range_max*100)));
         std::vector<float> dist_min(num_readings, range_max);
 
         // ROI depth is the resized float depth (m)
@@ -157,7 +144,7 @@ int main(int argc, char** argv)
                 if (x < 0 || x >= roi_depth.cols) continue;
 
                 float point_z = roi_depth.at<float>(y, x);
-                if (point_z <= close_threshold) continue; // Filter
+                if (point_z <= range_min) continue; // Filter
 
                 float point_x = ((x + roi_depth.cols / 2.0f) - cx) * point_z * inv_fx;
                 float point_y = ((y + roi_depth.rows / 2.0f) - cy) * point_z * inv_fy;
@@ -166,33 +153,38 @@ int main(int argc, char** argv)
                 if (dist < dist_min[x_bin]) {
                     dist = std::sqrt(point_x * point_x + point_z * point_z);
                     dist_min[x_bin] = dist;
-                    ranges[x_bin] = dist;
+                    ranges[x_bin] = static_cast<uint8_t>(round(dist*100));
                 }
             }
         }
 
-        float min_range = range_max;
-        if (!ranges.empty()) {
-            min_range = *std::min_element(ranges.begin(), ranges.end());
+        for (int i = 1; i < ranges.size() + 1; ++i) 
+        {
+            slave.callMethod(i, (int)ranges[i-1]);
         }
-        // std::cout << "Frame " << frame_id << ": LaserScan generated (min range=" 
-        //           << min_range << " m)\n";
 
-        // Serialize and save
-        // const std::string scan_name = "../out/scan_sample.bin";
-        // serializeScan(ranges, scan_name);
+        // float min_range = range_max;
+        // if (!ranges.empty()) {
+        //     min_range = *std::min_element(ranges.begin(), ranges.end());
+        // }
+        // std::cout << "min range = " << min_range << " m)\n";
 
         // Save .csv file of ranges
-        std::ofstream csv("../out/scan_sample.csv");
-        csv << "range_m\n";
-        for (float r : ranges) csv << r << "\n";
-        csv.close();
+        // std::ofstream csv("../out/scan_sample.csv");
+        // csv << "range_m\n";
+        // for (float r : ranges) csv << r << "\n";
+        // csv.close();
 
         std::this_thread::sleep_for(std::chrono::milliseconds(read_delay_ms));
     }
 
+    for (int i = 1; i < num_readings+1; ++i) 
+    {
+        slave.callMethod(i, 0);
+    }
+
     cam_reader.disconnect();
-    // slave.disconnect();
+    slave.disconnect();
     std::cout << "Shutdown complete.\n";
     return 0;
 }
