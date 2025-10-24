@@ -10,10 +10,9 @@ laserscan:
   num_readings: 320      # Horizontal readings
   angle_min: -1.97       # rad
   angle_max: 1.97        # rad
-  range_min: 0.25        # m
-  range_max: 5.0         # m
+  range_min: 0.20        # m
+  range_max: 2.55        # m
   k_pixel: 2.0           # 640 / 320 = 2.0
-  close_threshold: 0.3   # m
-  read_delay_ms: 20
+  read_delay_ms: 8
   min_valid_percent: 5.0
   max_no_frames: 1000
