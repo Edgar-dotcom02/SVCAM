@@ -1,5 +1,8 @@
 {
     "Serial": "/dev/ttyS1",
     "Baudrate": 115200,
-    "Id": 1
+    "Id": 1,
+    "Mode": "dxl",
+    "Lidar_start_pixel": 1,
+    "Lidar_end_pixel": 320
 }
