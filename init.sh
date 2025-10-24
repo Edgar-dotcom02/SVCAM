@@ -13,3 +13,4 @@ apt-get -y upgrade
 apt-get install -y build-essential libtbb-dev pkg-config libtool autoconf automake uuid-dev
 
 echo "=== Обновление ОКОНЧЕНО ==="
+echo "Пожалуйста перезагрузите компьютер"
